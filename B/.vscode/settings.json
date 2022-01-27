@@ -4,6 +4,8 @@
         "ostream": "cpp",
         "vector": "cpp",
         "ios": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "memory": "cpp",
+        "regex": "cpp"
     }
 }
