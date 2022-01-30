@@ -1,0 +1,19 @@
+[
+	{
+		"correct_answers":
+		[
+			"1 2 4 5 3 0"
+		],
+		"test": "5\nLRRLR\n"
+	},
+	{
+		"correct_answers":
+		[
+			"7 6 5 4 3 2 1 0"
+		],
+		"test": "7\nLLLLLLL\n"
+	},
+	{
+		"test": "10\nRRRRRRRRRR\n"
+	}
+]

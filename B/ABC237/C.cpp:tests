@@ -1,0 +1,86 @@
+[
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "kasaka\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "atcoder\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "php\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "jaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "x\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "xaaaaaaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "xya\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "xxa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "xxxaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "bbaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "baba\n"
+	},
+	{
+		"test": "abaa\n",
+		"uncorrect_answers":
+		[
+			"No"
+		]
+	}
+]
