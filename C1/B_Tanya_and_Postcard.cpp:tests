@@ -1,0 +1,11 @@
+[
+	{
+		"test": "AbC\nDCbA\n"
+	},
+	{
+		"test": "ABC\nabc\n"
+	},
+	{
+		"test": "abacaba\nAbaCaBA\n"
+	}
+]
