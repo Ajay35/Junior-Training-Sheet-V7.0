@@ -24,7 +24,7 @@ void solve()
 {
     vector<bool> prime(N + 10, true);
     prime[0] = prime[1] = false;
-    for(int i = 2; i <= N; i++)
+    for (int i = 2; i * i <= N; i++)
     {
         if (prime[i] and (long long)i * i <= N)
         {
@@ -34,19 +34,19 @@ void solve()
             }
         }
     }
-    
+
     int n;
     while (cin >> n)
     {
         int n1 = n / 2;
         int n2 = n / 2;
-        if(n & 1)
+        if (n & 1)
             n2++;
-        if(n1 > n2)
+        if (n1 > n2)
             swap(n1, n2);
-        if(n1 % 2 == 1 or n2 % 2 == 1)
+        if (n1 % 2 == 1 or n2 % 2 == 1)
         {
-            if(n1 & 1)
+            if (n1 & 1)
             {
                 n1--;
                 n2++;
@@ -57,33 +57,33 @@ void solve()
                 n2--;
             }
         }
-        if(n1 <= 2 or n2 <= 2)
+        if (n1 <= 2 or n2 <= 2)
         {
-            cout<<"Impossible"<<endl;
+            cout << "Impossible" << endl;
         }
         else
         {
             vi ans(4);
-            for(int i = 2; i <= n1 / 2; i++)
+            for (int i = 2; i <= n1 / 2; i++)
             {
-                if(prime[i] and n1-i > 0 and prime[n1-i])
+                if (prime[i] and n1 - i > 0 and prime[n1 - i])
                 {
                     ans[0] = i;
                     ans[1] = n1 - i;
                 }
             }
-            for(int i = 2; i <= n2 / 2; i++)
+            for (int i = 2; i <= n2 / 2; i++)
             {
-                if(prime[i] and n2-i > 0 and prime[n2-i])
+                if (prime[i] and n2 - i > 0 and prime[n2 - i])
                 {
                     ans[2] = i;
                     ans[3] = n2 - i;
                 }
             }
-            for(int i = 0; i < 4; i++)
-                cout<<ans[i]<<" ";
-            cout<<endl;
-            
+            for (int i = 0; i < 4; i++)
+                cout << ans[i] << " ";
+            cout << endl;
+
         }
     }
 }
