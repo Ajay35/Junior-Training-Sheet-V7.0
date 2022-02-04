@@ -40,7 +40,7 @@ void solve()
     vector<remain> temp;
 
     vi ans1(n), ans2(n);
-    
+
     int k = n / 2;
 
     // handle k top players case
@@ -60,18 +60,18 @@ void solve()
     sort(all(temp), cmp);
     int i = 0;
     int rem = n;
-    while(i < sz(temp) and rem > 0)
+    while (i < sz(temp) and rem > 0)
     {
         int ind = temp[i].ind;
         int semi = temp[i].semi;
-        if(semi == 1)
+        if (semi == 1)
             ans1[ind] = 1;
         else
             ans2[ind] = 1;
         rem--;
         i++;
     }
-    
+
     rep(i, 0, n)
     {
         cout << ans1[i];

@@ -1,0 +1,38 @@
+[
+	{
+		"correct_answers":
+		[
+			"ajay\njadhav",
+			"Case 1:\n2\n0\nCase 2:\n2\n0\nCase 3:\n4\n2\n0\n0\n0\n0\nCase 4:\n4\n0\n2\n0\nCase 5:\n0\n0\n0\n0"
+		],
+		"test": "5\n()\n<>\n(<>)><\n()()\n{[[}\n\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Case 1:\n14\n12\n10\n8\n6\n4\n2\n0\n0\n0\n0\n0\n0\n0"
+		],
+		"test": "1\n((((((()))))))\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Case 1:\n8\n4\n2\n0\n0\n0\n2\n0"
+		],
+		"test": "1\n((()))()\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Case 1:\n14\n12\n10\n8\n6\n4\n2\n0\n0\n0\n0\n0\n0\n0\n0\n0\nCase 2:\n16\n0\n14\n0\n12\n0\n10\n4\n2\n0\n0\n0\n4\n2\n0\n0\n0\n0\n0\nCase 3:\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\nCase 4:\n14\n12\n10\n8\n6\n4\n2\n0\n0\n0\n0\n0\n0\n0\n0\n2\n0\nCase 5:\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\nCase 6:\n8\n0\n6\n0\n4\n2\n0\n0\nCase 7:\n14\n12\n10\n8\n6\n4\n2\n0\n0\n0\n0\n0\n0\n0\nCase 8:\n0\n0\n0\nCase 9:\n12\n0\n10\n0\n8\n6\n4\n2\n0\n0\n0\n0\n0\n0\n0\n0"
+		],
+		"test": "9\n((((((()))))))))\n()<><><<<>>>(()))))\n(((((((((>>>>>>>>>>>>>>\n{{{{{{{}}}}}}}}[]\n}}}}}}[[[[[[[[[[\n[][][[]]\n<<<<<<<>>>>>>>\n>>>\n{}[]{{{{}}}}}}}}\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Case 1:\n6\n0\n4\n0\n2\n0\n0"
+		],
+		"test": "1\n()()())\n"
+	}
+]
