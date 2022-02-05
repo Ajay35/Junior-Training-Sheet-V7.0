@@ -19,64 +19,135 @@
 #define rep(i,a,b)  for(int i=a;i<b;i++)
 using namespace std;
 
-int dx[8] = {1,0,-1,0,1,1,-1,-1};
-int dy[8] = {0,1,0,-1,1,-1,1,-1};
+const int N = 1001;
+bool vis[N][N][4];
+int dis[N][N];
+char board[N][N];
 
-int bfs(vector<string>& board, pii st, pii en, int n, int m)
+int n, m, sx, sy;
+
+
+int bfs()
 {
-    vector<vector<bool>> vis(n, vector<bool>(m, false));
-    queue<pair<int, pii>> que;
-    que.push({0, st});
-    vis[st.x][st.y] = true;
-    
-    while(!que.empty())
+    queue<pii> que;
+    rep(i, 0, n) rep(j, 0, m) rep(k, 0, 4) vis[i][j][k] = false;
+    rep(i, 0, n) rep(j, 0, m) dis[i][j] = 1e9;
+    que.push({sx, sy});
+    dis[sx][sy] = 0;
+    vis[sx][sy][0] = true;
+    vis[sx][sy][1] = true;
+    vis[sx][sy][2] = true;
+    vis[sx][sy][3] = true;
+
+    while (!que.empty())
     {
-        pair<int, pii> cur = que.front();
+        pii cur = que.front();
         que.pop();
-        if(cur.y.x == en.x and cur.y.y == en.y)
-        {
-            return cur.x;
-        }
-        rep(i, 0, 8)
-        {
-            int nx = cur.y.x + dx[i];
-            int ny = cur.y.y + dy[i];
-            if(nx >=0 and nx <n and ny >= 0 and ny < m and !vis[nx][ny] and board[nx][ny] != 'X')
-            {
-                que.push({cur.x + 1, {nx, ny}}); 
-                vis[nx][ny] = true;
-            }
-        }
-    }
-    return 1e9;
-}
 
-void solve()
-{
-    int n, m;
-    cin>>n>>m;
-    pii st, en;
-    vector<string> board(n);
-    rep(i, 0, n)
-    {
-        cin>>board[i];
-        rep(j, 0, m)
+        int xx = cur.x;
+        int yy = cur.y;
+
+        // go up, 0
+        for (int i = xx - 1; i >= 0; i--)
         {
-            if(board[i][j] == 'S')
-                st = {i, j};
-            if(board[i][j] == 'F')
-                en = {i, j};
+            if (board[i][yy] == 'X' or vis[i][yy][0])
+                break;
+            dis[i][yy] = min(dis[i][yy], 1 + dis[xx][yy]);
+            if (board[i][yy] == 'F')
+                return dis[i][yy];
+            vis[i][yy][0] = true;
+            que.push({i, yy});
+
+
+        }
+        // go down, 0
+        for (int i = xx + 1; i < n; i++)
+        {
+            if (board[i][yy] == 'X' or vis[i][yy][0])
+                break;
+            dis[i][yy] = min(dis[i][yy], 1 + dis[xx][yy]);
+            if (board[i][yy] == 'F')
+                return dis[i][yy];
+            vis[i][yy][0] = true;
+            que.push({i, yy});
+
+        }
+        // go left, 1
+        for (int i = yy - 1; i >= 0; i--)
+        {
+            if (board[xx][i] == 'X' or vis[xx][i][1])
+                break;
+            dis[xx][i] = min(dis[xx][i], 1 + dis[xx][yy]);
+            if (board[xx][i] == 'F')
+                return dis[xx][i];
+            vis[xx][i][1] = true;
+            que.push({xx, i});
+
+        }
+        // go right, 1
+        for (int i = yy + 1; i < m; i++)
+        {
+            if (board[xx][i] == 'X' or vis[xx][i][1])
+                break;
+            dis[xx][i] = min(dis[xx][i], 1 + dis[xx][yy]);
+            if (board[xx][i] == 'F')
+                return dis[xx][i];
+            vis[xx][i][1] = true;
+            que.push({xx, i});
+
+        }
+        // go up right, 2
+        for (int i = xx - 1, j = yy + 1; i >= 0 and j < m; j++, i--)
+        {
+            if (board[i][j] == 'X' or vis[i][j][2])
+                break;
+            dis[i][j] = min(dis[i][j], 1 + dis[xx][yy]);
+            if (board[i][j] == 'F')
+                return dis[i][j];
+            vis[i][j][2] = true;
+            que.push({i, j});
+
+        }
+        // go up left, 3
+        for (int i = xx - 1, j = yy - 1; i >= 0 and j >= 0; j--, i--)
+        {
+            if (board[i][j] == 'X' or vis[i][j][3])
+                break;
+            dis[i][j] = min(dis[i][j], 1 + dis[xx][yy]);
+            if (board[i][j] == 'F')
+                return dis[i][j];
+            vis[i][j][3] = true;
+            que.push({i, j});
+
+        }
+
+        // go down right, 3
+        for (int i = xx + 1, j = yy + 1; i < n and j < m; j++, i++)
+        {
+            if (board[i][j] == 'X' or vis[i][j][3])
+                break;
+            dis[i][j] = min(dis[i][j], 1 + dis[xx][yy]);
+            if (board[i][j] == 'F')
+                return dis[i][j];
+            vis[i][j][3] = true;
+            que.push({i, j});
+
+        }
+
+        // go down left
+        for (int i = xx + 1, j = yy - 1; i < n and j >= 0; j--, i++)
+        {
+            if (board[i][j] == 'X' or vis[i][j][2])
+                break;
+            dis[i][j] = min(dis[i][j], 1 + dis[xx][yy]);
+            if (board[i][j] == 'F')
+                return dis[i][j];
+            vis[i][j][2] = true;
+            que.push({i, j});
+
         }
     }
-    int max_dis = bfs(board, st, en, n, m);
-    if(max_dis == 1e9)
-    {
-        cout<<-1<<endl;
-    }
-    else
-    {
-        cout<<max_dis<<endl;
-    }
+    return -1;
 }
 
 signed main()
@@ -84,11 +155,20 @@ signed main()
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int t = 1;
-    cin>>t;
+    int t;
+    scanf("%d", &t);
     while (t--)
     {
-        solve();
+        scanf("%d %d", &n, &m);
+        rep(i, 0, n)
+        {
+            scanf("%s", board[i]);
+            rep(j, 0, m)
+            if (board[i][j] == 'S')
+                sx = i, sy = j;
+        }
+        int d = bfs();
+        printf("%d\n", d);
     }
     return 0;
 }
