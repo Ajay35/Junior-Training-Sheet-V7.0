@@ -19,40 +19,31 @@
 #define rep(i,a,b)  for(int i=a;i<b;i++)
 using namespace std;
 
-bool check(vi& a, int st, int side)
-{
-    for (int i = st; i < sz(a); i += side)
-        if (!a[i]) return false;
-
-    return true;
-}
-
 void solve()
 {
-    int n;
-    cin >> n;
-    vi a(n);
-    rep(i, 0, n)
-    {
-        cin >> a[i];
-    }
+   int n;
+   cin>>n;
+   int  a[n]; 
+   int mn = INT_MAX;
+   int mx = INT_MIN;
+   rep(i, 0, n)
+   {
+        cin>>a[i];
+        
+   }
 
-
-    rep(i, 1, n + 1)
-    {
-        if (n % i == 0 && n >= 3 * i)
+   bool pos = false;
+   rep(i, 1, n)
+   {
+        if(a[i] < a[i - 1])
         {
-            rep(j, 0, i)
-            {
-                if (check(a, j, i))
-                {
-                    cout << "YES" << endl;
-                    return;
-                }
-            }
+            cout<<"YES"<<endl;
+            return;
         }
-    }
-    cout << "NO";
+   }
+   cout<<"NO"<<endl;
+   
+
 }
 
 signed main()
@@ -61,7 +52,7 @@ signed main()
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    // cin>>t;
+    cin>>t;
     while (t--)
     {
         solve();
